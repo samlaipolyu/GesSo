@@ -2,6 +2,9 @@
 
 <hr>
 
+This is a MATLAB simulator that allows you to play with a virtual soft robot using a Leap Motion - if you have one - in real-time maneuvering. 
+
+
 ### Preparation
 
 To run the code, ensure that you have:
