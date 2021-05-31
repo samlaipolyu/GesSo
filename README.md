@@ -19,7 +19,7 @@ To run the code, ensure that you have:
 
 ### How
 
-Step 1 - Download the all the code in this GesSo repo
+Step 1 - Download this GesSo repo
 
 Step 2 - Run `main.m`
 
