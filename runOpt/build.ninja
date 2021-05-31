@@ -1,0 +1,128 @@
+# CompilerName=mingw64
+# Mode=optim
+ninja_required_version = 1.3
+
+# Basic folders
+root = .
+builddir = $root/build/win64
+matlabdir = D:/MATLAB R2020a
+startdir = D:/OneDrive - PolyU/OneDrive - The Hong Kong Polytechnic University/matleap 4.0
+
+# Toolchain information
+cc = C:\ProgramData\MATLAB\SupportPackages\R2020a\3P.instrset\mingw_w64.instrset\bin\gcc
+cxx = C:\ProgramData\MATLAB\SupportPackages\R2020a\3P.instrset\mingw_w64.instrset\bin\g++
+linker = C:\ProgramData\MATLAB\SupportPackages\R2020a\3P.instrset\mingw_w64.instrset\bin\gcc
+linkerxx = C:\ProgramData\MATLAB\SupportPackages\R2020a\3P.instrset\mingw_w64.instrset\bin\g++
+
+cflags =  -c -fexceptions -fno-omit-frame-pointer -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I "D:\OneDrive - PolyU\OneDrive - The Hong Kong Polytechnic University\matleap 4.0\codegen\mex\runOpt" -I "D:\OneDrive - PolyU\OneDrive - The Hong Kong Polytechnic University\matleap 4.0" -I "D:\OneDrive - PolyU\OneDrive - The Hong Kong Polytechnic University\matleap 4.0\codegen\mex\runOpt\interface" -I "D:\MATLAB R2020a\extern\include" -I "." -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE -DMW_HAVE_LAPACK_DECLS -DMODEL=runOpt_mex -D__USE_MINGW_ANSI_STDIO=1  
+
+cxxflags =  -c -fexceptions -fno-omit-frame-pointer -std=c++11 -m64 -DMATLAB_MEX_FILE  -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c++11 -I "D:\OneDrive - PolyU\OneDrive - The Hong Kong Polytechnic University\matleap 4.0\codegen\mex\runOpt" -I "D:\OneDrive - PolyU\OneDrive - The Hong Kong Polytechnic University\matleap 4.0" -I "D:\OneDrive - PolyU\OneDrive - The Hong Kong Polytechnic University\matleap 4.0\codegen\mex\runOpt\interface" -I "D:\MATLAB R2020a\extern\include" -I "." -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE -DMW_HAVE_LAPACK_DECLS -DMODEL=runOpt_mex -D__USE_MINGW_ANSI_STDIO=1  
+
+ldflags =  -m64 -Wl,--no-undefined -shared -static -L"D:\MATLAB R2020a\extern\lib\win64\mingw64" -llibmx -llibmex -llibmat -lm -llibmwlapack -llibmwblas -o "runOpt_mex.mexw64" -L"$matlabdir\extern\lib\win64\mingw64" -llibmwlapack -llibmwblas -llibemlrt -llibcovrt -llibut -llibmwmathutil  -Wl,--version-script,runOpt_mex.map
+
+# Build Rules
+rule cc
+    command = $cc $cflags $in -o $out
+
+rule cxx
+    command = $cxx $cxxflags $in -o $out
+
+rule link
+    command = $linker @$out.rsp $ldflags
+    rspfile = $out.rsp
+    rspfile_content = $in
+
+rule linkxx
+    command = $linkerxx $in $ldflags
+
+# Build
+build $builddir/rt_nonfinite.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/rt_nonfinite.c
+build $builddir/runOpt_data.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/runOpt_data.c
+build $builddir/runOpt_initialize.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/runOpt_initialize.c
+build $builddir/runOpt_terminate.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/runOpt_terminate.c
+build $builddir/runOpt.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/runOpt.c
+build $builddir/eml_int_forloop_overflow_check.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/eml_int_forloop_overflow_check.c
+build $builddir/scalexpAlloc.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/scalexpAlloc.c
+build $builddir/checkLinearInputs.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/checkLinearInputs.c
+build $builddir/saveState.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/saveState.c
+build $builddir/xcopy.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/xcopy.c
+build $builddir/computeObjective_.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/computeObjective_.c
+build $builddir/factoryConstruct.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/factoryConstruct.c
+build $builddir/finDiffEvalAndChkErr.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/finDiffEvalAndChkErr.c
+build $builddir/computeFiniteDifferences.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/computeFiniteDifferences.c
+build $builddir/factorQRE.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/factorQRE.c
+build $builddir/factorQR.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/factorQR.c
+build $builddir/deleteColMoveEnd.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/deleteColMoveEnd.c
+build $builddir/factor.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/factor.c
+build $builddir/solve.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/solve.c
+build $builddir/computeGrad_StoreHx.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/computeGrad_StoreHx.c
+build $builddir/computeFval_ReuseHx.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/computeFval_ReuseHx.c
+build $builddir/computeFval.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/computeFval.c
+build $builddir/linearForm_.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/linearForm_.c
+build $builddir/factoryConstruct1.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/factoryConstruct1.c
+build $builddir/initActiveSet.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/initActiveSet.c
+build $builddir/setProblemType.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/setProblemType.c
+build $builddir/removeAllIneqConstr.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/removeAllIneqConstr.c
+build $builddir/maxConstraintViolation.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/maxConstraintViolation.c
+build $builddir/addAineqConstr.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/addAineqConstr.c
+build $builddir/modifyOverheadPhaseOne_.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/modifyOverheadPhaseOne_.c
+build $builddir/moveConstraint_.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/moveConstraint_.c
+build $builddir/addBoundToActiveSetMatrix_.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/addBoundToActiveSetMatrix_.c
+build $builddir/fwk.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/fwk.c
+build $builddir/atan2.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/atan2.c
+build $builddir/rotz.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/rotz.c
+build $builddir/cosd.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/cosd.c
+build $builddir/sind.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/sind.c
+build $builddir/roty.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/roty.c
+build $builddir/rotm2eul.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/rotm2eul.c
+build $builddir/xnrm2.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/xnrm2.c
+build $builddir/fwkeul_alpha.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/fwkeul_alpha.c
+build $builddir/fwkeul_gamma.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/fwkeul_gamma.c
+build $builddir/fwkeul_beta.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/fwkeul_beta.c
+build $builddir/computeLinearResiduals.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/computeLinearResiduals.c
+build $builddir/xgemv.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/xgemv.c
+build $builddir/updateWorkingSetForNewQP.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/updateWorkingSetForNewQP.c
+build $builddir/xasum.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/xasum.c
+build $builddir/driver.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/driver.c
+build $builddir/test_exit.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/test_exit.c
+build $builddir/computeGradLag.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/computeGradLag.c
+build $builddir/ixamax.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/ixamax.c
+build $builddir/computePrimalFeasError.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/computePrimalFeasError.c
+build $builddir/computeDualFeasError.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/computeDualFeasError.c
+build $builddir/computeComplError.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/computeComplError.c
+build $builddir/isDeltaXTooSmall.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/isDeltaXTooSmall.c
+build $builddir/xgeqp3.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/xgeqp3.c
+build $builddir/computeQ_.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/computeQ_.c
+build $builddir/xorgqr.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/xorgqr.c
+build $builddir/xtrsv.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/xtrsv.c
+build $builddir/sortLambdaQP.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/sortLambdaQP.c
+build $builddir/step.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/step.c
+build $builddir/normal.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/normal.c
+build $builddir/driver1.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/driver1.c
+build $builddir/PresolveWorkingSet.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/PresolveWorkingSet.c
+build $builddir/RemoveDependentEq_.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/RemoveDependentEq_.c
+build $builddir/xdot.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/xdot.c
+build $builddir/countsort.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/countsort.c
+build $builddir/RemoveDependentIneq_.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/RemoveDependentIneq_.c
+build $builddir/feasibleX0ForWorkingSet.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/feasibleX0ForWorkingSet.c
+build $builddir/xgeqrf.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/xgeqrf.c
+build $builddir/xgemm.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/xgemm.c
+build $builddir/xtrsm.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/xtrsm.c
+build $builddir/phaseone.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/phaseone.c
+build $builddir/iterate.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/iterate.c
+build $builddir/xrot.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/xrot.c
+build $builddir/compute_deltax.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/compute_deltax.c
+build $builddir/xpotrf.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/xpotrf.c
+build $builddir/feasibleratiotest.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/feasibleratiotest.c
+build $builddir/checkUnboundedOrIllPosed.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/checkUnboundedOrIllPosed.c
+build $builddir/checkStoppingAndUpdateFval.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/checkStoppingAndUpdateFval.c
+build $builddir/relaxed.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/relaxed.c
+build $builddir/soc.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/soc.c
+build $builddir/BFGSUpdate.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/BFGSUpdate.c
+build $builddir/_coder_runOpt_api.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/interface/_coder_runOpt_api.c
+build $builddir/_coder_runOpt_mex.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/interface/_coder_runOpt_mex.c
+build $builddir/_coder_runOpt_info.o : cc D$:/OneDrive$ -$ PolyU/OneDrive$ -$ The$ Hong$ Kong$ Polytechnic$ University/matleap$ 4.0/codegen/mex/runOpt/interface/_coder_runOpt_info.c
+build $builddir/c_mexapi_version.o : cc D$:/MATLAB$ R2020a/extern/version/c_mexapi_version.c
+
+# Link
+build $root\runOpt_mex.mexw64 : link $builddir\rt_nonfinite.o $builddir\runOpt_data.o $builddir\runOpt_initialize.o $builddir\runOpt_terminate.o $builddir\runOpt.o $builddir\eml_int_forloop_overflow_check.o $builddir\scalexpAlloc.o $builddir\checkLinearInputs.o $builddir\saveState.o $builddir\xcopy.o $builddir\computeObjective_.o $builddir\factoryConstruct.o $builddir\finDiffEvalAndChkErr.o $builddir\computeFiniteDifferences.o $builddir\factorQRE.o $builddir\factorQR.o $builddir\deleteColMoveEnd.o $builddir\factor.o $builddir\solve.o $builddir\computeGrad_StoreHx.o $builddir\computeFval_ReuseHx.o $builddir\computeFval.o $builddir\linearForm_.o $builddir\factoryConstruct1.o $builddir\initActiveSet.o $builddir\setProblemType.o $builddir\removeAllIneqConstr.o $builddir\maxConstraintViolation.o $builddir\addAineqConstr.o $builddir\modifyOverheadPhaseOne_.o $builddir\moveConstraint_.o $builddir\addBoundToActiveSetMatrix_.o $builddir\fwk.o $builddir\atan2.o $builddir\rotz.o $builddir\cosd.o $builddir\sind.o $builddir\roty.o $builddir\rotm2eul.o $builddir\xnrm2.o $builddir\fwkeul_alpha.o $builddir\fwkeul_gamma.o $builddir\fwkeul_beta.o $builddir\computeLinearResiduals.o $builddir\xgemv.o $builddir\updateWorkingSetForNewQP.o $builddir\xasum.o $builddir\driver.o $builddir\test_exit.o $builddir\computeGradLag.o $builddir\ixamax.o $builddir\computePrimalFeasError.o $builddir\computeDualFeasError.o $builddir\computeComplError.o $builddir\isDeltaXTooSmall.o $builddir\xgeqp3.o $builddir\computeQ_.o $builddir\xorgqr.o $builddir\xtrsv.o $builddir\sortLambdaQP.o $builddir\step.o $builddir\normal.o $builddir\driver1.o $builddir\PresolveWorkingSet.o $builddir\RemoveDependentEq_.o $builddir\xdot.o $builddir\countsort.o $builddir\RemoveDependentIneq_.o $builddir\feasibleX0ForWorkingSet.o $builddir\xgeqrf.o $builddir\xgemm.o $builddir\xtrsm.o $builddir\phaseone.o $builddir\iterate.o $builddir\xrot.o $builddir\compute_deltax.o $builddir\xpotrf.o $builddir\feasibleratiotest.o $builddir\checkUnboundedOrIllPosed.o $builddir\checkStoppingAndUpdateFval.o $builddir\relaxed.o $builddir\soc.o $builddir\BFGSUpdate.o $builddir\_coder_runOpt_api.o $builddir\_coder_runOpt_mex.o $builddir\_coder_runOpt_info.o $builddir\c_mexapi_version.o 
