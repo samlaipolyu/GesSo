@@ -2,7 +2,7 @@
 
 <hr>
 
-This is a MATLAB simulator that allows you to play with a virtual soft robot using a Leap Motion - if you have one - in real-time maneuvering. 
+This is a Matlab simulator that allows you to play with a virtual soft robot using a Leap Motion - if you have one - in real-time maneuvering. 
 
 
 ### Preparation
@@ -12,9 +12,9 @@ To run the code, ensure that you have:
 - A Leap Motion Controller [[Where to buy]](https://www.ultraleap.com/product/leap-motion-controller/)
 - [Leap Motion SDK](https://developer.leapmotion.com/sdk-leap-motion-controller/) 
 - MATLAB, proabably 2015 or above. I am using the 2020.
-- In MATLAB:
+- In Matlab:
   - Include the GesSo and its subfiles in the path
-  - Use Visual Studio as C++ compiler for MEX files in MATLAB. In command windows, type `mex -setup cpp` and select `Microsoft Visual C++ 2019` as the complier.
+  - Use Visual Studio as C++ compiler for MEX files. In command windows, type `mex -setup cpp` and select `Microsoft Visual C++ 2019` as the complier.
 
 
 ### How
