@@ -23,7 +23,7 @@ Step 1 - Download this GesSo repo
 
 Step 2 - Run `main.m`
 
-Step 3 - You will see the panel showing a real-time animation of a soft robot with two segment.
+Step 3 - You will see the `drawnow` figure window showing a real-time animation of a soft robot with two segment, and on a linear slide.
 
 ### Customization
 
