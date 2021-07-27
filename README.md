@@ -25,6 +25,10 @@ Step 2 - Run `main.m`
 
 Step 3 - You will see the `drawnow` figure window showing a real-time animation of a soft robot with two segment, and on a linear slide.
 
+### Test the Matleap - Hand Detection with Kalman Filter and LPF-SLERP
+
+- Run the `play_hand_kalman.m` in the `hand_matleap` file. You will see the performance of hand motion estimation/filtering.
+
 ### Customization
 
 - The physical parameters - such as bending stiffness, segment length, etc. - can be cumstomized in the `drawAnimation.m` in the `misc` file. You can make it softer or stiffer, longer or shorter.
