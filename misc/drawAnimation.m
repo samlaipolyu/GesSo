@@ -34,8 +34,8 @@ s_2 = L + ds_2;
 ds_1 = (f_11 + f_12 + f_13) + ((f_21 + f_22 + f_23))/(3*K_A);
 s_1 = L + ds_1;
 
-K_B2 = 2*0.8*313.8175/s_2(end);
-K_B1 = 2*0.8*313.8175/s_1(end);
+K_B2 = 1.5*0.8*313.8175/s_2(end);
+K_B1 = 1.5*0.8*313.8175/s_1(end);
 
 s_1_store = s_1(end);
 s_2_store = s_2(end);
@@ -186,7 +186,7 @@ zlim([0 180]);
 %set(gca,'zdir','reverse')
 camproj('perspective')
 view([50.5 31.6]);
-
+%view([0 90])
 drawnow;
 hold off
 
