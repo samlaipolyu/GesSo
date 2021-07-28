@@ -170,7 +170,7 @@ while 1
             
             % thumbs-up sign straight configuration
             if gesture == goodSign
-                q = [0.00001;0;0;0;0.00001;0;task(3)-100];
+                q = [0.00001;0;0;0;0.00001;0;task(3)-80];
                 disp('Thumbs-up gesture detected!')
             end
 
