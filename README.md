@@ -21,7 +21,7 @@ To run the code, ensure that you have:
 
 Step 1 - Download this GesSo repo
 
-Step 2 - Run `main.m`
+Step 2 - Run `main_xxxx.m`
 
 Step 3 - You will see the `drawnow` figure window showing a real-time animation of a soft robot with two segment, and on a linear slide.
 
